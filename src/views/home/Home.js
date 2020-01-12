@@ -10,6 +10,10 @@ export class Home extends Component {
     };
 
   };
+
+  handleChange(event) {
+  };
+
   handleSubmit(event) {
     event.preventDefault();
     console.log('*** handleSubmit');
