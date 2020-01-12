@@ -9,6 +9,8 @@ export class Home extends Component {
       searchResults: [],
     };
 
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   handleChange(event) {
