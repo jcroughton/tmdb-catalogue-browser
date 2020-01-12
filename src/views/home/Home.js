@@ -19,7 +19,22 @@ export class Home extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('*** handleSubmit');
+
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/search/multi?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${this.state.searchValue}`)
+    .then(res => res.json())
+    .then(
+      (result) => {
+        let sorted = result.results.sort((a,b)=> {
+          return new Date(b.release_date) - new Date(a.release_date);
+        });
+
+        this.setState({ searchResults: sorted });
+      },
+      (error) => {
+        throw Error('Error retrieving search result.');
+      }
+    );
+
   };
 
   render() {
@@ -35,7 +50,7 @@ export class Home extends Component {
             placeholder="Search"
             value={this.state.searchValue}
             onChange={this.handleChange}
-          />
+        />
         </label>
 
         <button
