@@ -14,6 +14,7 @@ export class Home extends Component {
   };
 
   handleChange(event) {
+    this.setState({ searchValue: event.target.value });
   };
 
   handleSubmit(event) {
