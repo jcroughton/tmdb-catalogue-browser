@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+// https://reacttraining.com/react-router/web/example/route-config
 
-function App() {
+import React, { Suspense } from 'react';
+
+import {
+  BrowserRouter as Router,
+  Switch
+} from "react-router-dom";
+
+import { routes } from './routes';
+import { RouteWithSubRoutes } from './lib/index';
+
+export default function RouteConfig() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Suspense fallback={<div>Loading...</div>}>
+        <div>
+
+          <Switch>
+            {routes.map((route, i) => (
+              <RouteWithSubRoutes key={i} {...route} />
+            ))}
+          </Switch>
+
+          <footer>
+            <p>
+              This product uses the <a href="https://www.themoviedb.org/">TMDb</a> API but is not endorsed or certified by TMDb.
+            </p>
+          </footer>
+        </div>
+      </Suspense>
+    </Router>
   );
 }
-
-export default App;
