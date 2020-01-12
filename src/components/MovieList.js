@@ -7,7 +7,7 @@ export class MovieList extends Component {
         {
           Object.keys(this.props.moviesToList).map((movieId) =>
             <li key={movieId}>
-              <Link to={`/movie-detail/${this.props.moviesToList[movieId].id}`}>
+              <Link to={`/media-detail/${this.props.moviesToList[movieId].id}`}>
               {
                 this.props.moviesToList[movieId].backdrop_path !== null ?
                   <img src={`https://image.tmdb.org/t/p/w500${this.props.moviesToList[movieId].backdrop_path}`} alt={`${this.props.moviesToList[movieId].title} poster`} />
