@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 
 export class Home extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchValue: '',
+      searchResults: [],
+    };
+
+  };
   handleSubmit(event) {
     event.preventDefault();
     console.log('*** handleSubmit');
