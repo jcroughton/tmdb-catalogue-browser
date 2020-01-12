@@ -32,6 +32,8 @@ export class Home extends Component {
             id="search"
             type="text"
             placeholder="Search"
+            value={this.state.searchValue}
+            onChange={this.handleChange}
           />
         </label>
 
