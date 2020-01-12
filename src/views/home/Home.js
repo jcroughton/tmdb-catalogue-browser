@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+
+import MovieList from 'components/MovieList';
 
 export class Home extends Component {
   constructor(props) {
@@ -39,26 +41,31 @@ export class Home extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="search">
+      <Fragment>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="search">
 
-          Enter a tv show or movie to search:
+            Enter a tv show or movie to search:
 
-          <input
-            id="search"
-            type="text"
-            placeholder="Search"
-            value={this.state.searchValue}
-            onChange={this.handleChange}
-        />
-        </label>
+            <input
+              id="search"
+              type="text"
+              placeholder="Search"
+              value={this.state.searchValue}
+              onChange={this.handleChange}
+          />
+          </label>
 
-        <button
-          type="submit"
-        >
-          Send
-        </button>
-      </form>
+          <button
+            type="submit"
+          >
+            Send
+          </button>
+        </form>
+
+        <h2>Search results</h2>
+        <MovieList moviesToList={this.props.searchResults} />
+    </Fragment>
     )
   };
 }
