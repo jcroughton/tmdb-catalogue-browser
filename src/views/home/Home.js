@@ -64,7 +64,7 @@ export class Home extends Component {
         </form>
 
         <h2>Search results</h2>
-        <MovieList moviesToList={this.props.searchResults} />
+        <MovieList moviesToList={this.state.searchResults} />
     </Fragment>
     )
   };
