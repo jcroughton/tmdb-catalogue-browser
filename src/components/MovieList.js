@@ -5,10 +5,22 @@ import Popularity from './Popularity';
 export class MovieList extends Component {
   render() {
     return (
-      <ul>
+      <ul className="
+        flex
+        flex-row
+        flex-wrap
+      ">
         {
-          Object.keys(this.props.moviesToList).map((movieId) =>
-            <li key={movieId}>
+          Object.keys(this.props.moviesToList).map((movieId, index) =>
+            <li
+              key={movieId}
+              className=
+                {
+                  `w-6/12
+                  ${(index % 2) ? 'pl-4' : 'pr-4'}
+                  `
+                }
+            >
               <Link to={`/media-detail/${this.props.moviesToList[movieId].id}`}>
               {
                 this.props.moviesToList[movieId].poster_path !== null ?
