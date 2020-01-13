@@ -70,42 +70,45 @@ export class Home extends Component {
           <img src={logo} alt="The Movie Database" />
         </header>
 
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="search">
+        <div className="mx-4">
 
-            Enter a tv show or movie to search:
-            <span>
-              <input
-                id="search"
-                type="text"
-                placeholder="Search"
-                value={this.state.searchValue}
-                onChange={this.handleChange}
-              />
-              <button
-                type="button"
-                onClick={this.handleClearSearch}
-              >
-                Clear &times;
-              </button>
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="search">
 
-              <button
-                type="submit"
-              >
-                Magnify
-              </button>
-            </span>
-          </label>
+              Enter a tv show or movie to search:
+              <span>
+                <input
+                  id="search"
+                  type="text"
+                  placeholder="Search"
+                  value={this.state.searchValue}
+                  onChange={this.handleChange}
+                />
+                <button
+                  type="button"
+                  onClick={this.handleClearSearch}
+                >
+                  Clear &times;
+                </button>
+
+                <button
+                  type="submit"
+                >
+                  Magnify
+                </button>
+              </span>
+            </label>
 
 
-        </form>
+          </form>
 
-        {
-          this.props.searchResults.length < 1 ?
-            <PopularMovies />
-          :
-            <MovieList moviesToList={this.props.searchResults} />
-        }
+          {
+            this.props.searchResults.length < 1 ?
+              <PopularMovies />
+            :
+              <MovieList moviesToList={this.props.searchResults} />
+          }
+        </div>
     </Fragment>
     )
   };
