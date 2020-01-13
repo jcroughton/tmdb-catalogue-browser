@@ -6,6 +6,8 @@ import { searchMovies, clearSearch } from 'actions/index';
 import MovieList from 'components/MovieList';
 import PopularMovies from 'components/PopularMovies';
 
+import logo from 'images/logo-tmdb.svg';
+
 const mapStateToProps = state => {
   return {
     searchResults: state.searchResults
@@ -64,6 +66,10 @@ export class Home extends Component {
   render() {
     return (
       <Fragment>
+        <header className="Header">
+          <img src={logo} alt="The Movie Database" />
+        </header>
+
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="search">
 
