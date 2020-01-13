@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
-import { searchMovies } from 'actions/index';
+import { searchMovies, clearSearch } from 'actions/index';
 
 import MovieList from 'components/MovieList';
 import PopularMovies from 'components/PopularMovies';
@@ -14,7 +14,8 @@ const mapStateToProps = state => {
 
 const matchDispatchToProps = dispatch => {
   return {
-    searchMovies: searchResults => dispatch(searchMovies(searchResults))
+    searchMovies: searchResults => dispatch(searchMovies(searchResults)),
+    clearSearch: () => dispatch(clearSearch())
   };
 };
 
@@ -26,8 +27,14 @@ export class Home extends Component {
       searchValue: '',
     };
 
+    this.handleClearSearch = this.handleClearSearch.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  };
+
+  handleClearSearch(event) {
+    this.setState({ searchValue: '' });
+    this.props.clearSearch();
   };
 
   handleChange(event) {
@@ -61,28 +68,37 @@ export class Home extends Component {
           <label htmlFor="search">
 
             Enter a tv show or movie to search:
+            <span>
+              <input
+                id="search"
+                type="text"
+                placeholder="Search"
+                value={this.state.searchValue}
+                onChange={this.handleChange}
+              />
+              <button
+                type="button"
+                onClick={this.handleClearSearch}
+              >
+                Clear &times;
+              </button>
 
-            <input
-              id="search"
-              type="text"
-              placeholder="Search"
-              value={this.state.searchValue}
-              onChange={this.handleChange}
-          />
+              <button
+                type="submit"
+              >
+                Magnify
+              </button>
+            </span>
           </label>
 
-          <button
-            type="submit"
-          >
-            Send
-          </button>
+
         </form>
 
         {
           this.props.searchResults.length < 1 ?
-        <PopularMovies />
+            <PopularMovies />
           :
-        <MovieList moviesToList={this.props.searchResults} />
+            <MovieList moviesToList={this.props.searchResults} />
         }
     </Fragment>
     )
