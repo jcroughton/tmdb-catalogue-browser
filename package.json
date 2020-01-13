@@ -14,8 +14,9 @@
   },
   "scripts": {
     "build:css": "postcss src/main.scss -o src/main-generated.css",
+    "watch:css": "postcss src/main.scss -o src/main-generated.css --watch",
     "watch": "npm run start",
-    "start": "npm run build:css & react-scripts start",
+    "start": "npm run watch:css & react-scripts start",
     "build": "npm run build:css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
