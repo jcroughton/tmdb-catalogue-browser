@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { searchMovies } from 'actions/index';
 
 import MovieList from 'components/MovieList';
+import PopularMovies from 'components/PopularMovies';
 
 const mapStateToProps = state => {
   return {
@@ -76,6 +77,8 @@ export class Home extends Component {
             Send
           </button>
         </form>
+
+        <PopularMovies />
 
         <h2>Search results</h2>
         <MovieList moviesToList={this.props.searchResults} />
