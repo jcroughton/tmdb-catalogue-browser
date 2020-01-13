@@ -78,10 +78,12 @@ export class Home extends Component {
           </button>
         </form>
 
+        {
+          this.props.searchResults.length < 1 ?
         <PopularMovies />
-
-        <h2>Search results</h2>
+          :
         <MovieList moviesToList={this.props.searchResults} />
+        }
     </Fragment>
     )
   };
