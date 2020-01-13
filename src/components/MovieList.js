@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import Popularity from './Popularity';
 export class MovieList extends Component {
   render() {
     return (
@@ -19,7 +20,8 @@ export class MovieList extends Component {
               <div>
                 <h3>{this.props.moviesToList[movieId].title}</h3>
                 <p>{moment(this.props.moviesToList[movieId].release_date).format('MMMM YYYY')}</p>
-                <p>{parseFloat(this.props.moviesToList[movieId].popularity).toFixed()}%</p>
+
+                <p><Popularity score={this.props.moviesToList[movieId].vote_average} /></p>
               </div>
             </li>
           )

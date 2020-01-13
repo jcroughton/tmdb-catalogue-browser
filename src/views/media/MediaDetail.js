@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import moment from 'moment';
-import GoBack from '../../components/GoBack';
+import GoBack from 'components/GoBack';
+import Popularity from 'components/Popularity';
 
 export class MediaDetail extends Component {
   constructor(props) {
@@ -66,7 +67,9 @@ export class MediaDetail extends Component {
 
               <p>{this.state.mediaItem.title}</p>
               <p>{moment(this.state.mediaItem.release_date).format('YYYY')}</p>
-              <p>{parseFloat(this.state.mediaItem.popularity).toFixed()}% User Score</p>
+
+              <p><Popularity score={this.state.mediaItem.vote_average} /></p>
+
               <p>{this.formatTime(this.state.mediaItem.runtime)}</p>
               <p>{this.state.mediaItem.overview }</p>
             </Fragment>
