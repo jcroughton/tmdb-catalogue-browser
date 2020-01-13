@@ -1,6 +1,21 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+
+import { searchMovies } from 'actions/index';
 
 import MovieList from 'components/MovieList';
+
+const mapStateToProps = state => {
+  return {
+    searchResults: state.searchResults
+  }
+};
+
+const matchDispatchToProps = dispatch => {
+  return {
+    searchMovies: searchResults => dispatch(searchMovies(searchResults))
+  };
+};
 
 export class Home extends Component {
   constructor(props) {
@@ -8,7 +23,6 @@ export class Home extends Component {
 
     this.state = {
       searchValue: '',
-      searchResults: [],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -30,7 +44,7 @@ export class Home extends Component {
           return new Date(b.release_date) - new Date(a.release_date);
         });
 
-        this.setState({ searchResults: sorted });
+        this.props.searchMovies(sorted);
       },
       (error) => {
         throw Error('Error retrieving search result.');
@@ -64,10 +78,10 @@ export class Home extends Component {
         </form>
 
         <h2>Search results</h2>
-        <MovieList moviesToList={this.state.searchResults} />
+        <MovieList moviesToList={this.props.searchResults} />
     </Fragment>
     )
   };
 }
 
-export default Home;
+export default connect(mapStateToProps, matchDispatchToProps)(Home);
