@@ -1,2 +1,3 @@
 export const ADD_POPULAR_MOVIES = 'ADD_POPULAR_MOVIES';
 export const SEARCH_MOVIES = 'SEARCH_MOVIES';
+export const CLEAR_SEARCH = 'CLEAR_SEARCH';
