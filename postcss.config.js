@@ -24,7 +24,7 @@ module.exports = {
       keyframes: true,
       fontFace: true,
       content: [
-        './src/**/*.html', './src/**/*.js'
+        './src/**/*.js',
       ],
       css: [
         './src/**/*.css'
