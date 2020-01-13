@@ -20,28 +20,28 @@ module.exports = {
     require('postcss-import'),
     require('tailwindcss'),
     require('autoprefixer'),
-    purgecss({
-      keyframes: true,
-      fontFace: true,
-      content: [
-        './src/**/*.js',
-      ],
-      css: [
-        './src/**/*.css'
-      ],
-      extractors: [
-        {
-          extractor: class TailwindExtractor {
-            static extract(content) {
-              const contentWithoutStyleBlocks = content.replace(/<style[^]+?<\/style>/gi, '');
-              return contentWithoutStyleBlocks.match(/[A-Za-z0-9-_/:]*[A-Za-z0-9-_/]+/g) || [];
-            }
-          },
-          extensions: ['html', 'js'],
-        },
-      ],
-      whitelistPatterns: collectPurgeWhitelistPatterns(),
-      whitelistPatternsChildren: collectPurgeWhitelistPatterns(),
-    })
+    // purgecss({
+    //   keyframes: true,
+    //   fontFace: true,
+    //   content: [
+    //     './src/**/*.js',
+    //   ],
+    //   css: [
+    //     './src/**/*.css'
+    //   ],
+    //   extractors: [
+    //     {
+    //       extractor: class TailwindExtractor {
+    //         static extract(content) {
+    //           const contentWithoutStyleBlocks = content.replace(/<style[^]+?<\/style>/gi, '');
+    //           return contentWithoutStyleBlocks.match(/[A-Za-z0-9-_/:]*[A-Za-z0-9-_/]+/g) || [];
+    //         }
+    //       },
+    //       extensions: ['html', 'js'],
+    //     },
+    //   ],
+    //   whitelistPatterns: collectPurgeWhitelistPatterns(),
+    //   whitelistPatternsChildren: collectPurgeWhitelistPatterns(),
+    // })
   ]
 }
