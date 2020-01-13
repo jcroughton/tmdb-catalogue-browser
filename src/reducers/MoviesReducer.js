@@ -1,10 +1,17 @@
-import { SEARCH_MOVIES } from 'constants/action-types';
+import { ADD_POPULAR_MOVIES, SEARCH_MOVIES } from '../constants/action-types';
 
 const initialState = {
+  popularMovies: [],
   searchResults: [],
 };
 
-function MoviesReducer(state = initialState, action) {
+function moviesReducer(state = initialState, action) {
+  if (action.type === ADD_POPULAR_MOVIES) {
+    return Object.assign({}, state, {
+      popularMovies: action.payload
+    });
+  }
+
   if (action.type === SEARCH_MOVIES) {
     return Object.assign({}, state, {
       searchResults: action.payload
@@ -14,4 +21,4 @@ function MoviesReducer(state = initialState, action) {
   return state;
 };
 
-export default MoviesReducer;
+export default moviesReducer;
