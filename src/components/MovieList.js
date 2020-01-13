@@ -9,16 +9,16 @@ export class MovieList extends Component {
             <li key={movieId}>
               <Link to={`/media-detail/${this.props.moviesToList[movieId].id}`}>
               {
-                this.props.moviesToList[movieId].backdrop_path !== null ?
-                  <img src={`https://image.tmdb.org/t/p/w500${this.props.moviesToList[movieId].backdrop_path}`} alt={`${this.props.moviesToList[movieId].title} poster`} />
+                this.props.moviesToList[movieId].poster_path !== null ?
+                  <img src={`https://image.tmdb.org/t/p/w500${this.props.moviesToList[movieId].poster_path}`} alt={`${this.props.moviesToList[movieId].title} poster`} />
                 :
                   "No poster image available."
               }
               </Link>
               <div>
                 <h3>{this.props.moviesToList[movieId].title}</h3>
-                <p>{this.props.moviesToList[movieId].overview}</p>
-                <p>Released: {this.props.moviesToList[movieId].release_date}</p>
+                <p>{this.props.moviesToList[movieId].release_date}</p>
+                <p>{parseFloat(this.props.moviesToList[movieId].popularity).toFixed()}%</p>
               </div>
             </li>
           )
