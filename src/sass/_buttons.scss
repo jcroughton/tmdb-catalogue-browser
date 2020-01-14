@@ -1,0 +1,7 @@
+.Button {}
+
+.Button--clear {
+  @apply
+    cursor-pointer
+    w-5;
+}
