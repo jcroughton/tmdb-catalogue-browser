@@ -1,0 +1,46 @@
+.Card {
+  @apply
+    mb-5
+    relative;
+}
+
+.Card__image {
+  @apply
+    mb-3
+    rounded-lg;
+}
+
+.Card__details {
+  @apply
+    mt-3;
+}
+
+.Card__title {
+  @apply
+    leading-none
+    text-delta
+    text-sm;
+}
+
+.Card__date {
+  @apply
+    leading-none
+
+    text-echo
+    text-xs;
+}
+
+.Card__popularity {
+  @apply
+    absolute
+    font-bold
+    left-0
+    ml-1
+    mt-1
+    px-2
+    py-1
+    rounded-full
+    text-white
+    text-xs
+    top-0;
+}
