@@ -15,7 +15,7 @@ export class MediaDetail extends Component {
   componentDidMount() {
     let mediaItemId = this.props.match.params.mediaId;
 
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/movie/${mediaItemId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`)
+    fetch(`https://api.themoviedb.org/3/movie/${mediaItemId}?api_key=6ed12e064b90ae1290fa326ce9e790ff`)
     .then(res => res.json())
     .then(
       (result) => {
