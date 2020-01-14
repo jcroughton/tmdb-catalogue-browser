@@ -1,0 +1,14 @@
+.Media {}
+
+.MediaDetail__header {}
+
+.MediaDetail__backdrop {
+  @apply
+    bg-center
+    bg-cover
+    bg-no-repeat
+    relative
+    w-full;
+
+  min-height: 375px;
+}
