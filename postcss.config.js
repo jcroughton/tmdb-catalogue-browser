@@ -14,34 +14,40 @@ function collectPurgeWhitelistPatterns() {
   ];
 }
 
+/**
+ * Custom PurgeCSS Extractor
+ * https://github.com/FullHuman/purgecss
+ * https://github.com/FullHuman/purgecss-webpack-plugin
+ */
+class TailwindExtractor {
+  static extract(content) {
+    return content.match(/[\w-/:]+(?<!:)/g) || [];
+  }
+}
+
 module.exports = {
   parser: 'postcss-scss',
   plugins: [
     require('postcss-import'),
     require('tailwindcss'),
     require('autoprefixer'),
-    // purgecss({
-    //   keyframes: true,
-    //   fontFace: true,
-    //   content: [
-    //     './src/**/*.js',
-    //   ],
-    //   css: [
-    //     './src/**/*.css'
-    //   ],
-    //   extractors: [
-    //     {
-    //       extractor: class TailwindExtractor {
-    //         static extract(content) {
-    //           const contentWithoutStyleBlocks = content.replace(/<style[^]+?<\/style>/gi, '');
-    //           return contentWithoutStyleBlocks.match(/[A-Za-z0-9-_/:]*[A-Za-z0-9-_/]+/g) || [];
-    //         }
-    //       },
-    //       extensions: ['html', 'js'],
-    //     },
-    //   ],
-    //   whitelistPatterns: collectPurgeWhitelistPatterns(),
-    //   whitelistPatternsChildren: collectPurgeWhitelistPatterns(),
-    // })
+    purgecss({
+      keyframes: true,
+      fontFace: true,
+      content: [
+        './src/**/*.html',
+        './src/**/*.js',
+        './src/**/*.jsx',
+      ],
+      css: ['./src/**/*.css'],
+      extractors: [
+        {
+          extractor: TailwindExtractor,
+          extensions: ['html', 'js']
+        },
+      ],
+      whitelistPatterns: collectPurgeWhitelistPatterns(),
+      whitelistPatternsChildren: collectPurgeWhitelistPatterns(),
+    })
   ]
 }
