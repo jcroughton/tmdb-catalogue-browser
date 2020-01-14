@@ -44,3 +44,42 @@
     text-xs
     top-0;
 }
+
+
+.CardDetail {
+  @apply
+    flex
+    flex-row;
+}
+
+.CardDetail__image {
+  @apply
+    mr-4
+    -mt-16
+    shadow-xl;
+
+  width: 8.75rem;
+}
+
+.CardDetail__Intro {
+  @apply
+    mt-4;
+}
+
+.CardDetail__title {
+  @apply
+    text-2xl;
+
+  @screen sm {
+    @apply text-3xl;
+  }
+}
+
+.CardDetail__overview {
+  @apply
+    border-hotel
+    border-solid
+    border-t
+    mt-6
+    pt-6;
+}
