@@ -7,6 +7,8 @@ import MovieList from 'components/MovieList';
 import PopularMovies from 'components/PopularMovies';
 
 import logo from 'images/logo-tmdb.svg';
+import magnify from 'images/magnify.svg';
+import close from 'images/close.svg';
 
 const mapStateToProps = state => {
   return {
@@ -74,29 +76,49 @@ export class Home extends Component {
 
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="search">
-
-              Enter a tv show or movie to search:
-              <span>
+              <div className="
+                bg-white
+                flex
+                flex-row
+                items-center
+                p-4
+                rounded-full
+              ">
                 <input
                   id="search"
+                  className="
+                    placeholder-charlie
+                  "
                   type="text"
                   placeholder="Search"
                   value={this.state.searchValue}
                   onChange={this.handleChange}
                 />
-                <button
-                  type="button"
+
+
+                <img
                   onClick={this.handleClearSearch}
-                >
-                  Clear &times;
-                </button>
+                  className={
+                    this.props.searchResults.length < 1 ?
+                      'hidden'
+                    :
+                      'Button--clear'
+                  }
+                  src={close} alt="Clear search"
+                />
 
                 <button
                   type="submit"
+                  className={
+                    this.props.searchResults.length < 1 ?
+                      'block'
+                    :
+                      'hidden'
+                  }
                 >
-                  Magnify
+                  <img src={magnify} alt="Search" />
                 </button>
-              </span>
+              </div>
             </label>
 
 
