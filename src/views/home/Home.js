@@ -75,7 +75,10 @@ export class Home extends Component {
         <div className="mx-4">
 
           <form onSubmit={this.handleSubmit}>
-            <label htmlFor="search">
+            <label
+              className="block mb-11"
+              htmlFor="search"
+            >
               <div className="
                 bg-white
                 flex
