@@ -35,7 +35,7 @@ export class PopularMovies extends Component {
   render() {
     return (
       <Fragment>
-        <h2>Popular movies</h2>
+        <h1>Popular Movies</h1>
 
         <MovieList moviesToList={this.props.popularMovies} />
       </Fragment>
