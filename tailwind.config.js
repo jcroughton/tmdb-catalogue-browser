@@ -18,6 +18,10 @@ module.exports = {
       alpha: '#081B23',
       bravo: '#9FBBC7',
       charlie: '#01D277',
+      delta: '#E6F7FF',
+      echo: '#A1D1E6',
+      foxtrot: '#4902A3',
+      golf: '#D1225B',
 
       gray: {
         100: '#f7fafc',
@@ -141,6 +145,7 @@ module.exports = {
       '6': '1.5rem',
       '8': '2rem',
       '10': '2.5rem',
+      '11': '2.75rem',
       '12': '3rem',
       '16': '4rem',
       '20': '5rem',
@@ -224,8 +229,10 @@ module.exports = {
       default: '1',
     },
     fontFamily: {
+      roboto: ['Roboto', 'sans-serif'],
       sans: [
         'Montserrat',
+        'sans-serif',
         '-apple-system',
         'BlinkMacSystemFont',
         '"Segoe UI"',
@@ -233,7 +240,6 @@ module.exports = {
         '"Helvetica Neue"',
         'Arial',
         '"Noto Sans"',
-        'sans-serif',
         '"Apple Color Emoji"',
         '"Segoe UI Emoji"',
         '"Segoe UI Symbol"',
