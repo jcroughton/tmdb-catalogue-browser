@@ -20,7 +20,6 @@ export class MediaDetail extends Component {
     .then(
       (result) => {
         this.setState({ mediaItem: result });
-        console.log(this.state.mediaItem);
       },
       (error) => {
         throw Error('Error retrieving media item.');
