@@ -22,6 +22,7 @@ module.exports = {
       echo: '#A1D1E6',
       foxtrot: '#4902A3',
       golf: '#D1225B',
+      hotel: '#0F303D',
 
       gray: {
         100: '#f7fafc',
@@ -268,7 +269,7 @@ module.exports = {
       lg: '1.125rem',
       xl: '1.25rem',
       '2xl': '1.5rem',
-      '3xl': '1.875rem',
+      '3xl': '1.75rem',
       '4xl': '2.25rem',
       '5xl': '3rem',
       '6xl': '4rem',
