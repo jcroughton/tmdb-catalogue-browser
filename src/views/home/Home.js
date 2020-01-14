@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
-import { searchMovies, clearSearch } from 'actions/index';
+import { searchMovies, clearSearch, updateSearchValue } from 'actions/index';
 
 import MovieList from 'components/MovieList';
 import PopularMovies from 'components/PopularMovies';
@@ -12,14 +12,16 @@ import close from 'images/close.svg';
 
 const mapStateToProps = state => {
   return {
-    searchResults: state.searchResults
+    searchResults: state.searchResults,
+    searchValue: state.searchValue
   }
 };
 
 const matchDispatchToProps = dispatch => {
   return {
     searchMovies: searchResults => dispatch(searchMovies(searchResults)),
-    clearSearch: () => dispatch(clearSearch())
+    clearSearch: () => dispatch(clearSearch()),
+    updateSearchValue: searchValue => dispatch(updateSearchValue(searchValue))
   };
 };
 
@@ -27,28 +29,24 @@ export class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      searchValue: '',
-    };
-
     this.handleClearSearch = this.handleClearSearch.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   handleClearSearch(event) {
-    this.setState({ searchValue: '' });
+    this.props.updateSearchValue('');
     this.props.clearSearch();
   };
 
   handleChange(event) {
-    this.setState({ searchValue: event.target.value });
+    this.props.updateSearchValue(event.target.value);
   };
 
   handleSubmit(event) {
     event.preventDefault();
 
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/search/multi?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${this.state.searchValue}`)
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/search/multi?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${this.props.searchValue}`)
     .then(res => res.json())
     .then(
       (result) => {
@@ -94,10 +92,9 @@ export class Home extends Component {
                   "
                   type="text"
                   placeholder="Search"
-                  value={this.state.searchValue}
+                  value={this.props.searchValue}
                   onChange={this.handleChange}
                 />
-
 
                 <img
                   onClick={this.handleClearSearch}
@@ -123,7 +120,6 @@ export class Home extends Component {
                 </button>
               </div>
             </label>
-
 
           </form>
 
