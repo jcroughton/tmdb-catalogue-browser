@@ -23,7 +23,6 @@ export class PopularMovies extends Component {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result);
           this.props.addPopularMovies(result.results);
         },
         (error) => {
