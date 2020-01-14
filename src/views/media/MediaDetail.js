@@ -38,40 +38,51 @@ export class MediaDetail extends Component {
   render() {
     return (
       <Fragment>
-        <GoBack />
-        <h2>
-          Media Detail
-        </h2>
         {
           this.state.mediaItem === null ?
             <p>Loading...</p>
           :
             <Fragment>
-              <div className="bg-gray-300">
-              {
-                this.state.mediaItem.backdrop_path !== null ?
-                  <img src={`https://image.tmdb.org/t/p/w500${this.state.mediaItem.backdrop_path}`} alt={`${this.state.mediaItem.title} poster`} />
-                :
-                  null
-                }
+              <div className="MediaDetail__header">
+                <div
+                  className="MediaDetail__backdrop"
+                  style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${this.state.mediaItem.backdrop_path})`}}
+                  >
+                  <GoBack />
+                </div>
               </div>
+              <div className="
+                mx-4
+                pb-24
+              ">
+                <div className="
+                  Card
+                  CardDetail
+                ">
+                  {
+                    this.state.mediaItem.poster_path !== null ?
+                      <img className="Card__image CardDetail__image" src={`https://image.tmdb.org/t/p/w500${this.state.mediaItem.poster_path}`} alt={`${this.state.mediaItem.title} poster`} />
+                    :
+                      "No poster image available."
+                  }
+                  <div className="CardDetail__Intro">
+                    <h1 className="CardDetail__title">{this.state.mediaItem.title}</h1>
+                    <div className="text-xs">
+                      <div>
+                        {moment(this.state.mediaItem.release_date).format('YYYY')}
+                        &nbsp;&bull;&nbsp;
+                        <Popularity score={this.state.mediaItem.vote_average} /> User Score
+                      </div>
 
-              <div>
-              {
-                this.state.mediaItem.poster_path !== null ?
-                  <img src={`https://image.tmdb.org/t/p/w500${this.state.mediaItem.poster_path}`} alt={`${this.state.mediaItem.title} poster`} />
-                :
-                  "No poster image available."
-                }
+                      <div>{this.formatTime(this.state.mediaItem.runtime)}</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="CardDetail__overview">
+                  <h2 className="util-mimic-h1">Overview</h2>
+                  <p>{this.state.mediaItem.overview }</p>
+                </div>
               </div>
-
-              <p>{this.state.mediaItem.title}</p>
-              <p>{moment(this.state.mediaItem.release_date).format('YYYY')}</p>
-
-              <p><Popularity score={this.state.mediaItem.vote_average} /></p>
-
-              <p>{this.formatTime(this.state.mediaItem.runtime)}</p>
-              <p>{this.state.mediaItem.overview }</p>
             </Fragment>
         }
       </Fragment>
