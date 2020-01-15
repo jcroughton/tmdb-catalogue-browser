@@ -4,9 +4,16 @@
     relative;
 }
 
+.Card__container {
+  @apply
+    max-w-md
+    mb-3
+    mx-auto
+    relative;
+}
+
 .Card__image {
   @apply
-    mb-3
     rounded-lg;
 }
 
@@ -56,9 +63,10 @@
   @apply
     mr-4
     -mt-16
-    shadow-xl;
+    shadow-xl
+    w-auto;
 
-  width: 8.75rem;
+    max-height: 210px;
 }
 
 .CardDetail__Intro {

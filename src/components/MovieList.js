@@ -23,10 +23,10 @@ export class MovieList extends Component {
                   `
                 }
             >
-              <Link className="block" to={`/media-detail/${this.props.moviesToList[movieId].id}`}>
+              <Link className="block relative" to={`/media-detail/${this.props.moviesToList[movieId].id}`}>
               {
                 this.props.moviesToList[movieId].poster_path !== null ?
-                  <div className="relative">
+                  <div className="Card__container">
                     <img className="Card__image" src={`https://image.tmdb.org/t/p/w500${this.props.moviesToList[movieId].poster_path}`} alt={`${this.props.moviesToList[movieId].title} poster`} />
                     <span
                       className=
