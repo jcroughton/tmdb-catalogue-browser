@@ -39,16 +39,17 @@ export class MovieList extends Component {
                       }
 
                       >
-                        <Popularity score={this.props.moviesToList[movieId].vote_average} /></span>
+                      <Popularity score={this.props.moviesToList[movieId].vote_average} /></span>
+                      <div className="Card__details">
+                        <h2 className="Card__title">{this.props.moviesToList[movieId].title}</h2>
+                        <span className="Card__date">{moment(this.props.moviesToList[movieId].release_date).format('MMMM YYYY')}</span>
+                      </div>
+
                   </div>
                 :
                   "No poster image available."
               }
               </Link>
-              <div className="Card__details">
-                <h2 className="Card__title">{this.props.moviesToList[movieId].title}</h2>
-                <span className="Card__date">{moment(this.props.moviesToList[movieId].release_date).format('MMMM YYYY')}</span>
-              </div>
             </li>
           )
         }
