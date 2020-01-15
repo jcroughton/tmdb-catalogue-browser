@@ -51,7 +51,7 @@ export class MediaDetail extends Component {
                 </div>
               </div>
               <div className="
-                mx-4
+                Content__container
                 pb-24
               ">
                 <div className="
