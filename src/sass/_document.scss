@@ -14,3 +14,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Content__container {
+  @apply
+    max-w-6xl
+    mx-auto
+    pl-4
+    pr-4;
+}

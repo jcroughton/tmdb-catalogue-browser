@@ -70,7 +70,7 @@ export class Home extends Component {
           <img src={logo} alt="The Movie Database" />
         </header>
 
-        <div className="mx-4">
+        <div className="Content__container">
 
           <form onSubmit={this.handleSubmit}>
             <label
